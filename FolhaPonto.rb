@@ -10,7 +10,6 @@ $arq.write("\\documentclass[12pt,a4paper]{article}
 \\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
 \\linespread{1.3}
 \\usepackage{sans}
-\\usepackage[portuguese,brazilian]{babel}
 \\usepackage[utf8]{inputenc} \n
 
 \\begin{document}\n")
@@ -58,7 +57,11 @@ semana.each do |n, d|
 		for i in 1...string.size
 			hora << "#{string[i]} --- "
 		end
-		$arq.write("\\newcommand{\\#{d}}{--- #{hora}}\n")
+		if (string.size > 1)
+			$arq.write("\\newcommand{\\#{d}}{--- #{hora}}\n")
+		else
+			$arq.write("\\newcommand{\\#{d}}{}\n")
+		end
 	end
 end
 
@@ -72,8 +75,7 @@ $arq.write("\n\\thispagestyle{empty}
 \\end{center}
 
 \\large
-\\noindent \\textbf{Nome:} #{adm}
-\\\\
+\\noindent \\textbf{Nome:} #{adm} \\\\
 \\textbf{Assinatura:}
 \\underline{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
 \\\\
@@ -83,7 +85,6 @@ $arq.write("\n\\thispagestyle{empty}
 \\hline
 \\multicolumn{2}{|c|}{\\textbf{#{meses[start.mon]}}} \\\\ \\hline\n")
 
-puts ARGV.size
 if (ARGV.size == 1) 	
 	while (start != middle)
 		$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
