@@ -115,10 +115,12 @@ else
 		start += 1
 	end
 end
-=begin
-=end
 
 $arq.write("\\end{tabular}
 \\end{center}
 
 \\end{document}\n")
+
+`pdflatex folha.tex`
+`rm folha.aux` 
+`rm folha.log` 
