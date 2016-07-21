@@ -14,20 +14,5 @@ Como o script usa AWK, eu recomendo que vcs sigam o formato que eu usei. Caso qu
 Obs:
 - Não caprichei muito nos comentários agora, mas posso dar uma melhorada depois. Fiquem a vontade para perguntar o que quiser.
 - os arquivos referência podem ter o nome que quiserem
-
-Arquivo A (arquivo jornada -- exemplo) \n
-André Luiz Abdalla Silveira \n
-seg \n
-ter\n
-qua 10h-12h 14h-16h \n
-qui \n
-sex 14h-16h \n
-\n
-Arquivo B \n 
-04 07 \n
-05 07 \n
-06 07 \n
-07 07 \n
-08 07 \n
-
-Nesse caso é só incluir datas de feriados e/ou seus recessos. O meu arquivo feriado foi criado com feriado fictício caso vcs desejem ver qual é o resultado
+- Essa visualização não permite ver quebra de linhas. Se vcs quiserem ver como eu formatei os arquivos A e B, vocês podem olhar o resto da pasta
+- no caso do arquivo feriados é só incluir datas de feriados e/ou seus recessos. O meu arquivo feriado foi elaborado com feriados fictícios caso vcs desejem ver qual é o resultado
