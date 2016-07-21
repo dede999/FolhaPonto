@@ -15,19 +15,19 @@ Obs:
 - Não caprichei muito nos comentários agora, mas posso dar uma melhorada depois. Fiquem a vontade para perguntar o que quiser.
 - os arquivos referência podem ter o nome que quiserem
 
-Arquivo A (arquivo jornada -- exemplo)
-André Luiz Abdalla Silveira
-seg 
-ter
-qua 10h-12h 14h-16h
-qui
-sex 14h-16h 
-
-Arquivo B 
-04 07
-05 07
-06 07
-07 07
-08 07
+Arquivo A (arquivo jornada -- exemplo) \n
+André Luiz Abdalla Silveira \n
+seg \n
+ter\n
+qua 10h-12h 14h-16h \n
+qui \n
+sex 14h-16h \n
+\n
+Arquivo B \n 
+04 07 \n
+05 07 \n
+06 07 \n
+07 07 \n
+08 07 \n
 
 Nesse caso é só incluir datas de feriados e/ou seus recessos. O meu arquivo feriado foi criado com feriado fictício caso vcs desejem ver qual é o resultado
