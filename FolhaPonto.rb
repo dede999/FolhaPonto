@@ -121,6 +121,7 @@ $arq.write("\\end{tabular}
 \\end{center}
 
 \\end{document}\n")
+$arq.close
 
 `pdflatex folha.tex`
 `rm folha.aux` 
