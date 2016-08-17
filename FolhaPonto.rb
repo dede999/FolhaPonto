@@ -46,22 +46,18 @@ start = Date.new(2016, (n.mon-1), 21)
 middle = Date.new(2016, n.mon)
 ending = Date.new(2016, n.mon, 21)
 
-$arq.write("\\newcommand{\\sab}{--- Sabado ---}
-\\newcommand{\\dom}{--- Domingo ---}
-\\newcommand{\\fer}{--- Feriado ---}\n")
+$arq.write("\\newcommand{\\fer}{--- Feriado ---}\n")
 semana.each do |n, d|
-	if ((d <=> "dom") != 0 && (d <=> "sab") != 0)
-		hora = ""
-		string = `awk '$1 ~ "#{d}" {print}' < #{jornada}`
-		string = string.split(" ")
-		for i in 1...string.size
-			hora << "#{string[i]} --- "
-		end
-		if (string.size > 1)
-			$arq.write("\\newcommand{\\#{d}}{--- #{hora}}\n")
-		else
-			$arq.write("\\newcommand{\\#{d}}{}\n")
-		end
+	hora = ""
+	string = `awk '$1 ~ "#{d}" {print}' < #{jornada}`
+	string = string.split(" ")
+	for i in 1...string.size
+		hora << "#{string[i]} --- "
+	end
+	if (string.size > 1)
+		$arq.write("\\newcommand{\\#{d}}{--- #{hora}}\n")
+	else
+		$arq.write("\\newcommand{\\#{d}}{}\n")
 	end
 end
 
