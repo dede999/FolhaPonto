@@ -80,34 +80,56 @@ $arq.write("\n\\thispagestyle{empty}
 \\begin{tabular}{|p{3.5cm}|p{9cm}|}
 \\hline
 \\multicolumn{2}{|c|}{\\textbf{#{meses[start.mon]}}} \\\\ \\hline\n")
+f = false # esta de ferias?
+hol = [1, 2, 7, 12]
 
-if (ARGV.size == 1) 	
+if (ARGV.size == 1)
+	f = hol.include?(start.mon)
 	while (start != middle)
-		$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
-		start += 1
-	end
-	$arq.write("\\multicolumn{2}{|c|}{\\textbf{#{meses[start.mon]}}} \\\\ \\hline\n")
-	while (start != ending)
-		$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
-		start += 1
-	end
-else
-	while (start != middle)
-		ent = `awk '$1 == #{start.day} && $2 == #{start.mon} {print \"Feriado\"}' < feriados`
-		if ((ent <=> "Feriado\n") == 0)
-			$arq.write("#{start.day}/#{meses[start.mon]} & \\fer \\\\ \\hline\n")
+		if (f)
+			$arq.write("#{start.day}/#{meses[start.mon]} &  \\\\ \\hline\n")
 		else
 			$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
 		end
 		start += 1
 	end
 	$arq.write("\\multicolumn{2}{|c|}{\\textbf{#{meses[start.mon]}}} \\\\ \\hline\n")
+	f = hol.include?(start.mon)
+	while (start != ending)
+		if (f)
+			$arq.write("#{start.day}/#{meses[start.mon]} &  \\\\ \\hline\n")
+		else
+			$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
+		end
+		start += 1
+	end
+else
+	f = hol.include?(start.mon)
+	while (start != middle)
+		ent = `awk '$1 == #{start.day} && $2 == #{start.mon} {print \"Feriado\"}' < feriados`
+		if ((ent <=> "Feriado\n") == 0)
+			$arq.write("#{start.day}/#{meses[start.mon]} & \\fer \\\\ \\hline\n")
+		else
+			if (f)
+				$arq.write("#{start.day}/#{meses[start.mon]} &  \\\\ \\hline\n")
+			else
+				$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
+			end
+		end
+		start += 1
+	end
+	$arq.write("\\multicolumn{2}{|c|}{\\textbf{#{meses[start.mon]}}} \\\\ \\hline\n")
+	f = hol.include?(start.mon)
 	while (start != ending)
 		ent = `awk '$1 == #{start.day} && $2 == #{start.mon} {print \"Feriado\"}' < feriados`
 		if ((ent <=> "Feriado\n") == 0)
 			$arq.write("#{start.day}/#{meses[start.mon]} & \\fer \\\\ \\hline\n")
 		else
-			$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
+			if (f)
+				$arq.write("#{start.day}/#{meses[start.mon]} &  \\\\ \\hline\n")
+			else
+				$arq.write("#{start.day}/#{meses[start.mon]} & \\#{semana[start.wday]} \\\\ \\hline\n")
+			end
 		end
 		start += 1
 	end
