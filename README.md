@@ -3,7 +3,9 @@ Script que gera a folha de ponto dos admins da Rede Linux
 
 Eaee pessoal, esse script permite que a gente crie nossa folha de ponto sem ter muito trabalho (com quase nenhum, acredito). Para facillitar a nossa vida, eu vou mostrar como rodar ele. São dois comando por linha de comando sendo um obrigatório e um opcional.
 
+```
 $ ruby FolhaPonto.rb [jornada -- A] [feriados -- B]
+```
 
 A -- jornada -> esse argumento deve assumir como valor o nome do arquivo no qual vocês vão colocar os horários de vocês  (Obrigatório)
 
